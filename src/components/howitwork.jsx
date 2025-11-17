@@ -1,37 +1,42 @@
 import React, { useEffect, useState } from "react";
 import "./howitwork.css";
-import { Gift, CalendarDays, Utensils, ChartLine } from "lucide-react";
 
-function App() {
+// Import gambar dari folder assets
+import IconPaket from "../assets/paket.png";
+import IconJadwal from "../assets/jadwal.png";
+import IconMenu from "../assets/piring.png";
+import IconDashboard from "../assets/static.png";
+
+function HowItWork() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    // Trigger animasi saat komponen muncul
+    // Aktifkan animasi setelah komponen muncul
     setTimeout(() => setVisible(true), 100);
   }, []);
 
   const steps = [
     {
       id: 1,
-      icon: <Gift size={48} />,
+      icon: IconPaket,
       title: "Pilih Paket",
       desc: "Pilih dari berbagai catering terpercaya dan sesuaikan level paketmu.",
     },
     {
       id: 2,
-      icon: <CalendarDays size={48} />,
+      icon: IconJadwal,
       title: "Atur Jadwal dan Jumlah Makan",
       desc: "Pilih 1–3 kali makan per hari dan 4–6 hari per minggu.",
     },
     {
       id: 3,
-      icon: <Utensils size={48} />,
+      icon: IconMenu,
       title: "Pilih Menu atau Gunakan Rekomendasi",
       desc: "Atur sendiri atau biarkan sistem pilih menu seimbang untukmu.",
     },
     {
       id: 4,
-      icon: <ChartLine size={48} />,
+      icon: IconDashboard,
       title: "Nikmati dan Pantau di Dashboard",
       desc: "Lihat statistik nutrisi dan food waste setiap minggu.",
     },
@@ -50,7 +55,9 @@ function App() {
             style={{ transitionDelay: `${index * 0.2}s` }}
           >
             <div className="step-number">{step.id}</div>
-            <div className="icon">{step.icon}</div>
+            <div className="icon">
+              <img src={step.icon} alt={step.title} />
+            </div>
             <h3>{step.title}</h3>
             <p>{step.desc}</p>
           </div>
@@ -67,4 +74,4 @@ function App() {
   );
 }
 
-export default App;
+export default HowItWork;

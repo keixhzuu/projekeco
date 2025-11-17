@@ -1,128 +1,208 @@
 body {
   font-family: "Inter", system-ui, sans-serif;
-  background-color: #f8f8f8;
+  background-color: #ffffff;
   margin: 0;
-  padding: 40px;
+  padding: 0;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+  min-height: 100vh;
 }
 
+/* 🔹 Container utama */
 .how-it-works {
-  background-color: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  padding: 50px 40px;
-  max-width: 1200px;
+  padding: 120px 120px;
   width: 100%;
+  margin: auto;
+  max-width: 1500px;
   text-align: center;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1s ease forwards;
+}
+
+/* ✨ Animasi muncul utama */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .how-it-works h2 {
-  font-size: 28px;
-  color: #274e13;
-  margin-bottom: 8px;
+  font-size: 32px;
+  color: #1e3a1b;
+  margin-bottom: 10px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
 }
 
 .how-it-works p {
-  color: #444;
-  margin-bottom: 40px;
+  color: #555;
+  margin-bottom: 50px;
+  font-size: 16px;
+  font-weight: 400;
 }
 
-/* 4 kolom grid sejajar */
+/* 🔹 Tetap 4 kolom sejajar dalam 1 baris */
 .steps {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  justify-items: center;
+  gap: 3cm;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
+/* 🔹 Kartu seragam dan sejajar */
 .card {
   background-color: #f4f8f3;
-  border-radius: 12px;
-  padding: 24px 16px;
-  width: 240px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  padding: 34px 26px;
+  width: 100%;
+  max-width: 270px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+  transition: all 0.7s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  /* ✨ animasi muncul */
   opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.6s ease;
+  transform: translateY(50px);
+  animation: fadeUpCard 0.8s ease forwards;
 }
 
-.card.fade-up {
-  opacity: 1;
-  transform: translateY(0);
+/* ✨ animasi muncul berurutan */
+.card:nth-child(1) { animation-delay: 0.3s; }
+.card:nth-child(2) { animation-delay: 0.5s; }
+.card:nth-child(3) { animation-delay: 0.7s; }
+.card:nth-child(4) { animation-delay: 0.9s; }
+
+@keyframes fadeUpCard {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
+/* Hover halus */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* 🔹 Nomor langkah */
 .step-number {
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   background-color: #274e13;
-  color: white;
-  font-weight: bold;
+  color: #ffffff;
+  font-weight: 600;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 12px auto;
+  margin: 0 auto 14px auto;
   font-size: 14px;
 }
 
-.icon {
-  color: #274e13;
-  margin-bottom: 10px;
+/* 🔹 Ikon proporsional */
+.icon img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 14px;
+  filter: brightness(0) saturate(100%) invert(21%) sepia(68%) saturate(332%) hue-rotate(79deg) brightness(93%) contrast(92%);
 }
 
 .card h3 {
-  font-size: 16px;
+  font-size: 17px;
   color: #274e13;
   margin-bottom: 8px;
+  font-weight: 600;
 }
 
 .card p {
   font-size: 14px;
   color: #555;
-  line-height: 1.5;
+  line-height: 1.6;
+  text-align: center;
 }
 
-/* Timeline line */
+/* 🔹 Timeline */
 .timeline {
   position: relative;
-  margin-top: 50px;
+  margin-top: 60px;
   height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1.2s ease forwards;
+  animation-delay: 1s;
 }
 
 .line {
   position: absolute;
-  top: 9px;
-  left: 0;
-  right: 0;
+  top: 50%;
+  left: 5%;
+  right: 5%;
   height: 3px;
   background-color: #274e13;
   border-radius: 2px;
+  transform: translateY(-50%);
 }
 
 .dot {
-  position: relative;
   z-index: 2;
   width: 18px;
   height: 18px;
-  background-color: white;
+  background-color: #ffffff;
   border: 4px solid #274e13;
   border-radius: 50%;
   display: inline-block;
-  margin: 0 80px;
+  margin: 0 90px;
 }
 
-@media (max-width: 900px) {
-  .steps {
-    grid-template-columns: repeat(2, 1fr);
+/* 🔹 Responsif */
+@media (max-width: 1100px) {
+  .how-it-works {
+    width: 94%;
+    padding: 60px 30px;
+  }
+
+  .card {
+    max-width: 250px;
+  }
+
+  .dot {
+    margin: 0 60px;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .steps {
     grid-template-columns: 1fr;
   }
+
   .card {
-    width: 80%;
+    max-width: 85%;
+  }
+
+  .dot {
+    margin: 0 25px;
   }
 }
